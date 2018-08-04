@@ -1,9 +1,8 @@
+const path = require('path');
+
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
-const htmlWebpackPlugin = new HtmlWebPackPlugin({
-  template: "./src/index.html",
-  filename: "./index.html"
-});
+const htmlWebpackPlugin = new HtmlWebPackPlugin({template: "./src/index.html", filename: "./index.html"});
 
 module.exports = {
   module: {
@@ -14,12 +13,31 @@ module.exports = {
         use: {
           loader: "babel-loader"
         }
-      },
-      {
+      }, {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: [
+          'style-loader', {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
+          'postcss-loader'
+        ]
+      }, {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
       }
     ]
+  },
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000
   },
   plugins: [htmlWebpackPlugin]
 };

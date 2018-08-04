@@ -10,7 +10,7 @@
 //   }
 // }
 
-const BASE_URL = 'http://localhost:4000';
+const BASE_URL = 'http://192.168.1.235:3000';
 
 export default store => next => action => {
   if(!action.api) return next(action);
