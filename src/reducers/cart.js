@@ -7,9 +7,12 @@ export default (state = defaultState, action) => {
       cartItems: [...state.cartItems, action.data],
       price: state.price + action.data.priceFiat  }
 
-    case 'REMOVE_CART':
-      return {}
-      
+    case 'DELETE_CART':
+      return {...state,
+        cartItems: [...state.cartItems.filter((el, i) => i !== action.data)],
+        price: state.price - state.cartItems[action.data].priceFiat
+      }
+
     default:
       return state;
   }

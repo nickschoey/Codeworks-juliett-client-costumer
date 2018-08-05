@@ -19,7 +19,7 @@ class App extends Component {
   
   getItems = () => this.props.items.map((item, k) => <Item key={item._id} arrayKey = {k} name={item.name} img={item.imageURL} priceFiat={item.priceFiat}/>)
 
-  showCart = () => this.props.cart.map((item, key) => <Cart key={item.key} name={item.name} priceFiat={item.priceFiat}/>)
+  showCart = () => this.props.cart.map((item, index) => <Cart key={index} arrayKey={index} name={item.name} priceFiat={item.priceFiat}/>)
 
   render () {
 
