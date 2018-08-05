@@ -4,3 +4,4 @@ export const getItems = (data) => ({
     endpoint: `/items`,
   }
 });
+
