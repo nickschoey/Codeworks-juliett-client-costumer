@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './item.css';
+import { add2Cart } from '../../actions/add2Cart'
+import { connect } from 'react-redux';
 
 class Item extends Component {
 
-  render() {
-    const {name, img} = this.props
+  addToCart (key) {
+
+    this.props.addToCart(this.props.items[key])
+  }
+
+  render () {
+    const { name, img, priceFiat, arrayKey } = this.props
     return (
-      <div className="item">
-        <img src={img}/>
+      <div onClick={this.addToCart.bind(this, arrayKey)} className="item">
+        <img src={img} />
         <p>{name}</p>
+        <p>{priceFiat}€</p>
       </div>
     );
   }
@@ -17,6 +25,17 @@ class Item extends Component {
 
 Item.propTypes = {
   name: PropTypes.string,
+  priceFiat: PropTypes.number
 };
 
-export default Item;
+const mapStateToProps = (state) => ({
+
+  items: state.items
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  addToCart: (id) => dispatch(add2Cart(id)),
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Item);

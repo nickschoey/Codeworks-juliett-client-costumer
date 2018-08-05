@@ -35,6 +35,7 @@ module.exports = {
       }
     ]
   },
+  devtool: '#eval-source-map',
   watchOptions: {
     aggregateTimeout: 300,
     poll: 1000

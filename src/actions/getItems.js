@@ -5,9 +5,3 @@ export const getItems = (data) => ({
   }
 });
 
-export const getQuote = (data) => ({
-  type: 'GET_QUOTE',
-  api: {
-    endopoint: '/quote'
-  }
-})
