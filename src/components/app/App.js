@@ -13,7 +13,7 @@ class App extends Component {
   componentDidMount () {
     this.props.getItems();
     this.props.getQuote();
-    setInterval(() => this.props.getQuote(), 300000);
+    setInterval(() => this.props.getQuote(), 3000000);
 
   }
   
@@ -32,7 +32,7 @@ class App extends Component {
           {this.getItems()}
         </div>
         <div className="quote">
-          <p>ETH: {this.props.quote}€</p>
+          <p>ETH (Ξ): {this.props.quote} €</p>
         </div>
         <div className="cart">
           <p>YOUR ORDER</p>
