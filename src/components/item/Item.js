@@ -12,12 +12,13 @@ class Item extends Component {
   }
 
   render () {
-    const { name, img, priceFiat, arrayKey } = this.props
+    const { name, img, priceCrypto, arrayKey, priceFiat } = this.props
     return (
       <div onClick={this.addToCart.bind(this, arrayKey)} className="item">
         <img src={img} />
         <p>{name}</p>
-        <p>{priceFiat}€</p>
+        <p>{priceCrypto} Ξ</p>
+        <p>{priceFiat} €</p>
       </div>
     );
   }
@@ -30,7 +31,7 @@ Item.propTypes = {
 
 const mapStateToProps = (state) => ({
 
-  items: state.items
+  items: state.items.items
 });
 
 const mapDispatchToProps = (dispatch) => ({
