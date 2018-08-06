@@ -6,10 +6,7 @@ import { connect } from 'react-redux';
 
 class Item extends Component {
 
-  addToCart (key) {
-
-    this.props.addToCart(this.props.items[key])
-  }
+  addToCart = key => this.props.addToCart(this.props.items[key]);
 
   render () {
     const { name, img, priceCrypto, arrayKey, priceFiat } = this.props
