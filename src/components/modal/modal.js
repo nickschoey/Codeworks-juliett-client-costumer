@@ -8,7 +8,6 @@ class Modal extends Component {
 
   constructor(props){
     super(props)
-
     this.state = {
       name:'',
       address:'',
@@ -33,14 +32,6 @@ class Modal extends Component {
       cryptoPrice:this.props.cryptoPrice,
       price:this.props.price
     })
-    console.log({
-      name:this.state.name,
-      address:this.state.address,
-      phone:this.state.phone,
-      email:this.state.email,
-      wallet:this.state.wallet,
-      items:this.props.items
-    });
   }
 
   render () {
@@ -72,7 +63,6 @@ class Modal extends Component {
                 Your public ETH Wallet:
                 <input type="text" name="wallet" value={this.state.wallet} onChange={this.handleChange}/>
               </label>
-
               <input type="submit" value="Submit" />
             </form>
 
