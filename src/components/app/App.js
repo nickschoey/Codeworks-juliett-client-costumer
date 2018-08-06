@@ -18,9 +18,22 @@ class App extends Component {
 
   }
 
-  getItems = () => this.props.items.map((item, k) => <Item key={item._id} arrayKey={k} name={item.name} img={item.imageURL} priceCrypto={item.priceCrypto} priceFiat={item.priceFiat} />)
+  getItems = () => this.props.items.map((item, k) =>
+  <Item
+    key={item._id}
+    arrayKey={k}
+    name={item.name}
+    img={item.imageURL}
+    priceCrypto={item.priceCrypto}
+    priceFiat={item.priceFiat}
+  />)
 
-  showCart = () => this.props.cart.map((item, index) => <Cart key={index} arrayKey={index} name={item.name} priceFiat={item.priceFiat} />)
+  showCart = () => this.props.cart.map((item, index) =>
+  <Cart
+    key={index}
+    arrayKey={index}
+    name={item.name}
+    priceFiat={item.priceFiat} />)
 
   render () {
 
@@ -28,12 +41,12 @@ class App extends Component {
       <div className="mainWrapper">
         <div className="header">
           <img src={logo} />
+          <div className="quote">
+            <p>1 ETH (Ξ): {this.props.quote} €</p>
+          </div>
         </div>
         <div className="main">
           {this.getItems()}
-        </div>
-        <div className="quote">
-          <p>1 ETH (Ξ): {this.props.quote} €</p>
         </div>
         <div className="cart">
           <p>YOUR ORDER</p>
