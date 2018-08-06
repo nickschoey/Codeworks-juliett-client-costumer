@@ -5,7 +5,7 @@ import { getItems } from '../../actions/getItems'
 import './App.css';
 import logo from '../../assets/Juliett.png';
 import Item from '../item/Item';
-import Cart from '../cart/cart';
+import CartItem from '../cartItem/cartItem';
 import { updateCrypto } from '../../actions/updateCrypto';
 import Modal from '../modal/modal'
 
@@ -14,8 +14,7 @@ class App extends Component {
   componentDidMount () {
     this.props.getItems();
     this.props.updateCrypto();
-    setInterval(() => this.props.updateCrypto(), 600000);
-
+    // setInterval(() => this.props.updateCrypto(), 600000);
   }
 
   getItems = () => this.props.items.map((item, k) =>
@@ -26,10 +25,11 @@ class App extends Component {
     img={item.imageURL}
     priceCrypto={item.priceCrypto}
     priceFiat={item.priceFiat}
+    description={item.description}
   />)
 
   showCart = () => this.props.cart.map((item, index) =>
-  <Cart
+  <CartItem
     key={index}
     arrayKey={index}
     name={item.name}
@@ -42,7 +42,10 @@ class App extends Component {
         <div className="header">
           <img src={logo} />
           <div className="quote">
-            <p>1 ETH (Ξ): {this.props.quote} €</p>
+            <p>1 ETH (Ξ) : {this.props.quote} €</p>
+          </div>
+          <div>
+            <p>TOTAL:{this.props.cartTotalCrypto} Ξ or {this.props.cartTotal} €</p>
           </div>
         </div>
         <div className="main">
@@ -51,15 +54,11 @@ class App extends Component {
         <div className="cart">
           <p>YOUR ORDER</p>
           {this.showCart()}
-          <p>YOUR TOTAL IN FIAT: {this.props.cartTotal} €</p>
-          <p>YOUR TOTAL IN ETH: {this.props.cartTotalCrypto} Ξ</p>
         </div>
-        <div>
-          <button className="place-order" onClick={this.props.toggleModal}>
-            <span> ORDER </span>
-          </button>
-          <Modal onClick={this.props.toggleModal} status={this.props.modal} />
-        </div>
+        {/* <button className="place-order" onClick={this.props.toggleModal}>
+          <span> ORDER </span>
+        </button> */}
+        {/* <Modal onClick={this.props.toggleModal} status={this.props.modal} /> */}
       </div>
     );
   }
@@ -79,7 +78,6 @@ const mapDispatchToProps = (dispatch) => ({
   getItems: () => dispatch(getItems()),
   updateCrypto: () => dispatch(updateCrypto()),
   toggleModal: () => dispatch(toggleModal())
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
