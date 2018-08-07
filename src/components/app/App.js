@@ -68,9 +68,9 @@ class App extends Component {
         </div>
       {this.state.flag ?  <div className="modalOverlay">
              <Modal onClick={this.props.toggleModal} status={this.props.modal} />
-            <button onClick={()=>{this.setState({flag:false})}}>remove</button>
+            <button onClick={()=>{this.setState({flag:!this.state.flag})}}>remove</button>
         </div> : null }
-        <button onClick={()=>{this.setState({flag:true})}}>remove</button>
+        <button onClick={()=>{this.setState({flag:!this.state.flag})}}>remove</button>
       </div>
     );
   }
