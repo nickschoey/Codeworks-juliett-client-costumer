@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './cameraQr.css';
 import QrReader from 'react-qr-reader'
-
+import { qrData } from '../../actions/qrData'
 class CameraQr extends Component {
   constructor(props){
     super(props)
@@ -14,6 +14,7 @@ class CameraQr extends Component {
   }
   handleScan(data){
     if(data){
+      this.props.qrData(data);
       this.setState({
         result: data,
       })
@@ -42,6 +43,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  qrData: (data) => dispatch(qrData(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CameraQr);

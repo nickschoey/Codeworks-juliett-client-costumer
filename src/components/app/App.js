@@ -12,10 +12,10 @@ import Modal from '../modal/modal'
 
 class App extends Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
-      flag:true
+      flag: true
     }
   }
 
@@ -26,22 +26,22 @@ class App extends Component {
   }
 
   getItems = () => this.props.items.map((item, k) =>
-  <Item
-    key={item._id}
-    arrayKey={k}
-    name={item.name}
-    img={item.imageURL}
-    priceCrypto={item.priceCrypto}
-    priceFiat={item.priceFiat}
-    description={item.description}
-  />)
+    <Item
+      key={item._id}
+      arrayKey={k}
+      name={item.name}
+      img={item.imageURL}
+      priceCrypto={item.priceCrypto}
+      priceFiat={item.priceFiat}
+      description={item.description}
+    />)
 
   showCart = () => this.props.cart.map((item, index) =>
-  <CartItem
-    key={index}
-    arrayKey={index}
-    name={item.name}
-    priceFiat={item.priceFiat} />)
+    <CartItem
+      key={index}
+      arrayKey={index}
+      name={item.name}
+      priceFiat={item.priceFiat} />)
 
   render () {
 
@@ -66,11 +66,11 @@ class App extends Component {
           </div>
           <a className="checkOutButton" onClick={this.props.toggleModal}>Check Out </a>
         </div>
-      {this.state.flag ?  <div className="modalOverlay">
-             <Modal onClick={this.props.toggleModal} status={this.props.modal} />
-            <button onClick={()=>{this.setState({flag:!this.state.flag})}}>remove</button>
-        </div> : null }
-        <button onClick={()=>{this.setState({flag:!this.state.flag})}}>remove</button>
+        {this.state.flag ? <div className="modalOverlay">
+          <Modal onClick={this.props.toggleModal} status={this.props.modal} />
+          <button onClick={() => { this.setState({ flag: !this.state.flag }) }}>remove</button>
+        </div> : null}
+        <button onClick={() => { this.setState({ flag: !this.state.flag }) }}>remove</button>
       </div>
     );
   }
