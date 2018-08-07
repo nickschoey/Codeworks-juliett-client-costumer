@@ -12,6 +12,13 @@ import Modal from '../modal/modal'
 
 class App extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      flag:true
+    }
+  }
+
   componentDidMount () {
     this.props.getItems();
     this.props.updateCrypto();
@@ -59,9 +66,11 @@ class App extends Component {
           </div>
           <a className="checkOutButton" onClick={this.props.toggleModal}>Check Out </a>
         </div>
-        <div className="modalOverlay">
-          <Modal onClick={this.props.toggleModal} status={this.props.modal} />
-        </div>
+      {this.state.flag ?  <div className="modalOverlay">
+             <Modal onClick={this.props.toggleModal} status={this.props.modal} />
+            <button onClick={()=>{this.setState({flag:false})}}>remove</button>
+        </div> : null }
+        <button onClick={()=>{this.setState({flag:true})}}>remove</button>
       </div>
     );
   }
