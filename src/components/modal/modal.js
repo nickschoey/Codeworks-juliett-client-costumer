@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { postOrder } from '../../actions/postOrder'
+import CameraQr from '../cameraQr/CameraQr'
 import './modal.css';
 
 
@@ -19,7 +20,6 @@ class Modal extends Component {
 
   handleChange = (e) => this.setState({[e.target.name]:e.target.value})
 
-
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.postOrder({
@@ -35,11 +35,9 @@ class Modal extends Component {
   }
 
   render () {
-    console.log(this.props);
     return (
       <div className="modal" data-status={this.props.status}>
         <div className="modal-left">
-          {/* <span className="price-tag">12gfdgfd</span> */}
             <form onSubmit={this.handleSubmit}>
               <h3>Delivery details</h3>
               <label>
@@ -65,11 +63,9 @@ class Modal extends Component {
               </label>
               <input type="submit" value="Submit" />
             </form>
-
         </div>
         <div className="modal-right">
-          <h2>aaa</h2>
-          <p>aaa</p>
+          <CameraQr/> 
           <button onClick={this.props.onClick} className="close">
             <span className="fa fa-close">Close</span>
           </button>

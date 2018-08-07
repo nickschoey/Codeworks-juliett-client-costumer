@@ -1,16 +1,21 @@
 .cartItem {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 75px;
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   border-bottom: 1px solid lightgrey;
+  text-transform: uppercase;
 }
 
 /* .cartItem:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 } */
 
-.cartItem p {
+.cartItem p ,
+.cartItem a {
+  color: white;
   margin-left: 10px;
+  font-family: "Grotesque", sans-serif;
 }
