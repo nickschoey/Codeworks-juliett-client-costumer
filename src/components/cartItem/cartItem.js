@@ -12,7 +12,8 @@ class CartItem extends Component {
     const { name, arrayKey, priceFiat } = this.props
     return (
       <div className="cartItem">
-        <p>{name} - {priceFiat}€<span> - <a onClick={this.handleDeleteCartItem.bind(this, arrayKey)}>X</a></span></p>
+        <p>{name}</p>
+        <a onClick={this.handleDeleteCartItem.bind(this, arrayKey)}>X</a>
       </div>
     );
   }

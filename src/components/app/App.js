@@ -9,6 +9,7 @@ import CartItem from '../cartItem/cartItem';
 import { updateCrypto } from '../../actions/updateCrypto';
 import Modal from '../modal/modal'
 
+
 class App extends Component {
 
   componentDidMount () {
@@ -53,12 +54,14 @@ class App extends Component {
         </div>
         <div className="cart">
           <p>YOUR ORDER</p>
-          {this.showCart()}
+          <div className="cartItemContainer">
+            {this.showCart()}
+          </div>
+          <a className="checkOutButton" onClick={this.props.toggleModal}>Check Out </a>
         </div>
-        {/* <button className="place-order" onClick={this.props.toggleModal}>
-          <span> ORDER </span>
-        </button> */}
-        {/* <Modal onClick={this.props.toggleModal} status={this.props.modal} /> */}
+        <div className="modalOverlay">
+          <Modal onClick={this.props.toggleModal} status={this.props.modal} />
+        </div>
       </div>
     );
   }
