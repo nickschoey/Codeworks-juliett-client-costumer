@@ -35,7 +35,7 @@ class App extends Component {
             ...this.props.categories[el].map((item, k) =>
             <Item
               key={item._id}
-              arrayKey={k}
+              arrayKey={item.arrayKey}
               name={item.name}
               img={item.imageURL}
               priceCrypto={item.priceCrypto}
