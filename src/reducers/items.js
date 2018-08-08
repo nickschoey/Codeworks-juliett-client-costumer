@@ -5,7 +5,8 @@ export default (state = defaultState, action) => {
     case 'GET_ITEMS_SUCCESS':
       return {
         ...state,
-        categories: action.data.reduce((acc, el) => {
+        categories: action.data.reduce((acc, el,key) => {
+          el.arrayKey = key;
           if (acc.hasOwnProperty(el.category)) {
             acc[el.category].push(el)
           } else {
@@ -15,16 +16,16 @@ export default (state = defaultState, action) => {
           return acc;
         }, {}),
         items: action.data
-
       }
     case 'UPDATE_CRYPTO_SUCCESS':
-    // return {
-    // items: [...state.items.map(el => {
-    //   el.priceCrypto = (el.priceFiat / action.data).toFixed(6);
-    //   return el;
-    // })],
-    // quote: parseFloat(action.data.toFixed(2))
-    // }
+    return {
+    ...state,
+    items: [...state.items.map(el => {
+      el.priceCrypto = (el.priceFiat / action.data).toFixed(6);
+      return el;
+    })],
+    quote: parseFloat(action.data.toFixed(2))
+    }
     return state;
     default:
       return state;
