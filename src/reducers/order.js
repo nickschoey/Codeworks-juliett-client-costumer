@@ -15,7 +15,11 @@ export default (state = defaultState, action) => {
         paid: true
       }
     case 'POST_ORDER_FAILURE':
-      return state
+      return {
+        ...state,
+      waiting: false,
+      paid: false
+    }
     
     default:
       return state;
