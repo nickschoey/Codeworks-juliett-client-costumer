@@ -63,18 +63,28 @@ body {
 .categoriesTitle {
   color: white;
   font-size: 50px;
-  padding: 20px 10px;
+  padding: 30px 10px;
   text-transform: uppercase;
   font-family: "Grotesque black", sans-serif;
 }
 
 .header_element {
-  font-family: "Grotesque black", sans-serif;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   width: 33.33vw;
   text-transform: uppercase;
+}
+
+.header_element p {
+  font-family: "Grotesque", sans-serif;
+  font-kerning: 1.6;
+}
+
+.header_element p span{
+  font-family: "Grotesque black", sans-serif;
+  font-kerning: 1.6;
+  padding-right: 20px;
 }
 
 .header_element:first-child{
@@ -85,6 +95,13 @@ body {
 .header_element:nth-child(2) {
   display: flex;
   justify-content: center;
+  text-decoration: underline;
+  color: white;
+}
+.header_element:nth-child(3) {
+  display: flex;
+  justify-content: center;
+  padding-left: 15vw;
 }
 
 .cart{
@@ -134,4 +151,8 @@ body {
   width: 100vw;
   height: 100vh;
   background: rgba(29, 29, 29, 0.8);
+}
+
+.cart p {
+  font-family: "Grotesque black", sans-serif;
 }

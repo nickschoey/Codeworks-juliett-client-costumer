@@ -79,10 +79,10 @@ class App extends Component {
             <img src={logo} />
           </div>
           <div className="header_element">
-            <p className="ethPrice">1  Ξ : {this.props.quote} €</p>
+            <p className="ethPrice">1 Ξ = {this.props.quote} €</p>
           </div>
           <div className="header_element">
-            <p className="totalPrice">TOTAL:{this.props.cartTotalCrypto} Ξ or {this.props.cartTotal.toFixed(2)} €</p>
+            <p className="totalPrice"><span>TOTAL:</span>{this.props.cartTotalCrypto} Ξ or {this.props.cartTotal.toFixed(2)} €</p>
           </div>
         </div>
         <div className="main">
