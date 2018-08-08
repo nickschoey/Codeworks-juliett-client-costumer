@@ -12,65 +12,88 @@ import Modal from '../modal/modal'
 
 class App extends Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
-      flag: true
+      flag:false
     }
   }
 
   componentDidMount () {
     this.props.getItems();
     this.props.updateCrypto();
-    // setInterval(() => this.props.updateCrypto(), 600000);
   }
 
-  getItems = () => this.props.items.map((item, k) =>
-    <Item
-      key={item._id}
-      arrayKey={k}
-      name={item.name}
-      img={item.imageURL}
-      priceCrypto={item.priceCrypto}
-      priceFiat={item.priceFiat}
-      description={item.description}
-    />)
+  renderItems = () => {
+    if (!this.props.categories) return null;
+    let elements = [];
+    for(let el in this.props.categories) {
+      if (this.props.categories.hasOwnProperty(el)) {
+          elements = [
+            ...elements,
+            <h1>{el}</h1>,
+            ...this.props.categories[el].map((item, k) =>
+            <Item
+              key={item._id}
+              arrayKey={k}
+              name={item.name}
+              img={item.imageURL}
+              priceCrypto={item.priceCrypto}
+              priceFiat={item.priceFiat}
+              description={item.description}
+            />)
+          ]
+      }
+    }
+    console.log('ELEMENTS', elements);
+    return elements;
+  }
 
   showCart = () => this.props.cart.map((item, index) =>
-    <CartItem
-      key={index}
-      arrayKey={index}
-      name={item.name}
-      priceFiat={item.priceFiat} />)
+  <CartItem
+    key={index}
+    arrayKey={index}
+    name={item.name}
+    priceFiat={item.priceFiat} />)
+
+  renderModal() {
+    if (!this.state.flag) return null;
+    return (
+      <div className="modalOverlay">
+        <Modal onClick={this.props.toggleModal} status={this.props.modal} />
+        <button onClick={this.showwModal}>remove</button>
+      </div>
+    )
+  }
+
+  showwModal = () => this.setState({flag:!this.state.flag})
 
   render () {
-
+    console.log(this.props);
     return (
       <div className="mainWrapper">
         <div className="header">
-          <img src={logo} />
-          <div className="quote">
-            <p>1 ETH (Ξ) : {this.props.quote} €</p>
+          <div className="header_element">
+            <img src={logo} />
           </div>
-          <div>
-            <p>TOTAL:{this.props.cartTotalCrypto} Ξ or {this.props.cartTotal} €</p>
+          <div className="header_element">
+            <p className="ethPrice">1 ETH (Ξ) : {this.props.quote} €</p>
+          </div>
+          <div className="header_element">
+            <p className="totalPrice">TOTAL:{this.props.cartTotalCrypto} Ξ or {this.props.cartTotal} €</p>
           </div>
         </div>
         <div className="main">
-          {this.getItems()}
+          {this.renderItems()}
         </div>
         <div className="cart">
           <p>YOUR ORDER</p>
           <div className="cartItemContainer">
             {this.showCart()}
           </div>
-          <a className="checkOutButton" onClick={this.props.toggleModal}>Check Out </a>
+          <a className="checkOutButton" onClick={this.showwModal}>Check Out </a>
         </div>
-        {this.state.flag ? <div className="modalOverlay">
-          <Modal onClick={this.props.toggleModal} status={this.props.modal} />
-          <button onClick={() => { this.setState({ flag: !this.state.flag }) }}>remove</button>
-        </div> : null}
-        <button onClick={() => { this.setState({ flag: !this.state.flag }) }}>remove</button>
+        {this.renderModal()}
       </div>
     );
   }
@@ -83,7 +106,8 @@ const mapStateToProps = (state) => ({
   cart: state.cart.cartItems,
   cartTotal: state.cart.price,
   cartTotalCrypto: state.cart.cryptoPrice,
-  modal: state.modal
+  modal: state.modal,
+  categories:state.items.categories
 });
 
 const mapDispatchToProps = (dispatch) => ({
