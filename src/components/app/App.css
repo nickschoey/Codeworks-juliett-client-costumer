@@ -54,6 +54,20 @@ body {
   overflow:auto;
 }
 
+.categorieContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.categoriesTitle {
+  color: white;
+  font-size: 50px;
+  padding: 20px 10px;
+  text-transform: uppercase;
+  font-family: "Grotesque black", sans-serif;
+}
+
 .header_element {
   font-family: "Grotesque black", sans-serif;
   display: flex;

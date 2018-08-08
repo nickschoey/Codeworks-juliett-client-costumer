@@ -14,7 +14,7 @@ export default (state = defaultState, action) => {
         ...state,
         cartItems: [...state.cartItems.filter((el, i) => i !== action.data)],
         price: parseFloat((state.price - state.cartItems[action.data].priceFiat).toFixed(1)),
-      cryptoPrice: (parseFloat(state.cryptoPrice) - parseFloat(state.cartItems[action.data].priceCrypto)).toFixed(6)
+        cryptoPrice: (parseFloat(state.cryptoPrice) - parseFloat(state.cartItems[action.data].priceCrypto)).toFixed(6)
       }
 
     default:
