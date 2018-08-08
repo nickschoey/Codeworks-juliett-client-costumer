@@ -8,18 +8,16 @@ class CameraQr extends Component {
     super(props)
     this.state = {
       delay: 300,
-      result: 'No result',
     }
     this.handleScan = this.handleScan.bind(this)
   }
+
   handleScan(data){
     if(data){
       this.props.qrData(data);
-      this.setState({
-        result: data,
-      })
     }
   }
+
   handleError(err){
     console.error(err)
   }
@@ -30,7 +28,7 @@ class CameraQr extends Component {
           delay={this.state.delay}
           onError={this.handleError}
           onScan={this.handleScan}
-          style={{ width: '25vw' }}
+          style={{ width: '25vw'}}
           />
         <p>{this.state.result}</p>
       </div>

@@ -1,9 +1,87 @@
 .modal {
-  background: white;
+  display: flex;
+  flex-direction: row;
 }
+
+.modal-left {
+  width: 25vw;
+  background: #40424A ;
+  padding: 20px;
+}
+
+.modal-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #40424A;
+  padding: 20px;
+}
+
+.modal-right img {
+  width: 25vw;
+}
+
 
 .modal-left form{
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
+}
+
+.modal-left label {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 18px;
+  font-family: "Grotesque", sans-serif;
+  color: white;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.cameraImg {
+  width: 25px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.cameraImg:hover {
+  transform: rotate(-10deg);
+}
+
+.modal-left input {
+  margin-top: 10px;
+  width: 100%;
+  background: none;
+  color: white;
+  font-size: 18px;
+  border:none;
+  border-bottom: 1px solid white;
+}
+
+.modal-left h3 {
+  font-size: 18px;
+  font-family: "Grotesque Black", sans-serif;
+  color: white;
+  text-transform: uppercase;
+  margin: 20px 0px;
+}
+
+.modal-left input[type="submit"] {
+  width: 80%;
+  height: 60px;
+  background:#2D7AEE;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-family: "Grotesque", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  margin-top: 20px;
+}
+
+.modal-left input[type="submit"]:hover {
+  color: lightgrey;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }

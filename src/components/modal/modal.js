@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { postOrder } from '../../actions/postOrder'
 import CameraQr from '../cameraQr/CameraQr'
 import './modal.css';
+import camera from '../../assets/Camera.svg';
+import qrCode from '../../assets/myqr.png';
 
 
 class Modal extends Component {
@@ -14,12 +16,13 @@ class Modal extends Component {
       address: '',
       phone: '',
       email: '',
-      wallet: ''
+      wallet: '',
+      cameraFlag:false
     }
   }
+
   componentDidUpdate (prevProps) {
     if (this.props.qrData !== prevProps.qrData && this.state.wallet !== this.props.qrData) {
-
       this.setState({
         wallet: this.props.qrData
       })
@@ -27,6 +30,8 @@ class Modal extends Component {
   }
 
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value })
+
+  handleCamera = () => this.setState({cameraFlag:!this.state.cameraFlag})
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -47,36 +52,23 @@ class Modal extends Component {
       <div className="modal" data-status={this.props.status}>
         <div className="modal-left">
           <form onSubmit={this.handleSubmit}>
-            <h3>Delivery details</h3>
-            <label>
-              Name:
-              </label>
+            <h3>Delivery details </h3>
+            <label>Name:</label>
             <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
-            <label>
-              Address:
-                <input type="text" name="address" value={this.state.address} onChange={this.handleChange} />
-            </label>
-            <label>
-              Phone:
-                <input type="text" name="phone" value={this.state.phone} onChange={this.handleChange} />
-            </label>
-            <label>
-              Email:
-                <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-            </label>
+            <label>Address:</label>
+            <input type="text" name="address" value={this.state.address} onChange={this.handleChange} />
+            <label>Phone:</label>
+            <input type="text" name="phone" value={this.state.phone} onChange={this.handleChange} />
+            <label>Email:</label>
+            <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
             <h3>Payment Details</h3>
-            <label>
-              Your public ETH Wallet:
-                <input type="text" name="wallet" value={this.state.wallet} onChange={this.handleChange} />
-            </label>
+            <label>Your public ETH Wallet: <a onClick = {this.handleCamera}><img className="cameraImg" src={camera}/></a></label>
+            <input type="text" name="wallet" value={this.state.wallet} onChange={this.handleChange} />
             <input type="submit" value="Submit" />
           </form>
         </div>
         <div className="modal-right">
-          <CameraQr />
-          <button onClick={this.props.onClick} className="close">
-            <span className="fa fa-close">Close</span>
-          </button>
+          {this.state.cameraFlag ? <CameraQr/> : <img src={qrCode}/>}
         </div>
       </div>
     );
