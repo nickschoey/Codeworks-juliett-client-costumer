@@ -6,7 +6,6 @@ import './modal.css';
 import camera from '../../assets/Camera.svg';
 import qrCode from '../../assets/myqr.png';
 
-
 class Modal extends Component {
 
   constructor (props) {
@@ -90,7 +89,7 @@ class Modal extends Component {
       modalContent =
         <div className="modal" data-status={this.props.status}>
           <div className="modal-left">
-          Your order is being processed. You can transfer {cryptoPrice} Ξ to the wallet represented by the qr on the right.
+            <h1>Your order is being processed. You can transfer {cryptoPrice} Ξ to the wallet represented by the qr on the right.</h1>
           </div>
           <div className="modal-right">
           <img src={qrCode}/>
@@ -100,12 +99,7 @@ class Modal extends Component {
     if (!isWaiting && paid) {
       modalContent =
         <div className="modal" data-status={this.props.status}>
-          <div className="modal-left">
-          We recieved the transfer! Thank you for your patience!
-          </div>
-          <div className="modal-right">
-            Successful transfer and happy people
-          </div>
+          <h2 className="pulse">your paynent as been verified and your order will be ready shorterly</h2>
         </div>
     }
 

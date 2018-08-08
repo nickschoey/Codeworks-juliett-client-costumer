@@ -63,7 +63,7 @@ class App extends Component {
     return (
       <div className="modalOverlay">
         <Modal onClick={this.props.toggleModal} status={this.props.modal} />
-        <button onClick={this.showwModal}>remove</button>
+        <a className="closeButton" onClick={this.showwModal}>X</a>
       </div>
     )
   }

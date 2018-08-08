@@ -153,6 +153,20 @@ body {
   background: rgba(29, 29, 29, 0.8);
 }
 
+.modalOverlay .closeButton {
+  color: white;
+  font-size: 24px;
+  font-family: Helvetica;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  cursor: pointer;
+}
+
+.modalOverlay .closeButton:hover {
+  transform: rotate(-20deg);
+}
+
 .cart p {
   font-family: "Grotesque black", sans-serif;
 }

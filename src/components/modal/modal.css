@@ -1,15 +1,20 @@
 .modal {
   display: flex;
   flex-direction: row;
+  width: 50vw;
+  height: 35vw;
+  background: #40424A;
 }
 
 .modal-left {
   width: 25vw;
   background: #40424A ;
   padding: 20px;
+  position: relative;
 }
 
 .modal-right {
+  width: 25vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,6 +40,59 @@
   color: white;
   text-transform: uppercase;
   margin-top: 10px;
+}
+
+.modal-left h1 {
+  color: white;
+  font-family: "Grotesque black", sans-serif;
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  font-size: 20px;
+  padding: 0px 30px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.modal h2 {
+  color: white;
+  font-family: "Grotesque black", sans-serif;
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  font-size: 30px;
+  width: 25vw;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  /* -webkit-animation: flickerAnimation 2s infinite;
+  -moz-animation: flickerAnimation 2s infinite;
+  -o-animation: flickerAnimation 2s infinite;
+   animation: flickerAnimation 2s infinite; */
+}
+
+@keyframes flickerAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-o-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
 }
 
 .cameraImg {

@@ -21,7 +21,7 @@ class Item extends Component {
       <div className="item">
         <div className="card">
           <div className="thumb">
-             <img src={img} />
+             <img src={img}/>
           </div>
           <div className="infos">
             <h2 className="title">{name}</h2>
