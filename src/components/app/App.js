@@ -31,17 +31,19 @@ class App extends Component {
       if (this.props.categories.hasOwnProperty(el)) {
           elements = [
             ...elements,
-            <h1>{el}</h1>,
-            ...this.props.categories[el].map((item, k) =>
-            <Item
-              key={item._id}
-              arrayKey={item.arrayKey}
-              name={item.name}
-              img={item.imageURL}
-              priceCrypto={item.priceCrypto}
-              priceFiat={item.priceFiat}
-              description={item.description}
-            />)
+            <h1 className="categoriesTitle">{el}</h1>,
+            <div className="categorieContainer">
+              {this.props.categories[el].map((item, k) =>
+                <Item
+                  key={item._id}
+                  arrayKey={item.arrayKey}
+                  name={item.name}
+                  img={item.imageURL}
+                  priceCrypto={item.priceCrypto}
+                  priceFiat={item.priceFiat}
+                  description={item.description}
+                />)}
+              </div>
           ]
       }
     }
@@ -80,7 +82,7 @@ class App extends Component {
             <p className="ethPrice">1 ETH (Ξ) : {this.props.quote} €</p>
           </div>
           <div className="header_element">
-            <p className="totalPrice">TOTAL:{this.props.cartTotalCrypto} Ξ or {this.props.cartTotal} €</p>
+            <p className="totalPrice">TOTAL:{this.props.cartTotalCrypto} Ξ or {this.props.cartTotal.toFixed(2)} €</p>
           </div>
         </div>
         <div className="main">
