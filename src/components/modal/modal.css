@@ -8,7 +8,7 @@
 
 .modal-left {
   width: 25vw;
-  background: #40424A ;
+  background: #40424A;
   padding: 20px;
   position: relative;
 }
@@ -23,8 +23,7 @@
   width: 30vw;
 }
 
-
-.modal-left form{
+.modal-left form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,24 +74,51 @@
 }
 
 @keyframes flickerAnimation {
-  0%   { opacity:1; }
-  50%  { opacity:0; }
-  100% { opacity:1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-@-o-keyframes flickerAnimation{
-  0%   { opacity:1; }
-  50%  { opacity:0; }
-  100% { opacity:1; }
+
+@-o-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-@-moz-keyframes flickerAnimation{
-  0%   { opacity:1; }
-  50%  { opacity:0; }
-  100% { opacity:1; }
+
+@-moz-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-@-webkit-keyframes flickerAnimation{
-  0%   { opacity:1; }
-  50%  { opacity:0; }
-  100% { opacity:1; }
+
+@-webkit-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .cameraImg {
@@ -111,7 +137,7 @@
   background: none;
   color: white;
   font-size: 18px;
-  border:none;
+  border: none;
   border-bottom: 1px solid white;
 }
 
@@ -126,17 +152,35 @@
 .modal-left input[type="submit"] {
   width: 80%;
   height: 60px;
-  background:#2D7AEE;
+  background: #2D7AEE;
   color: white;
   border: none;
   border-radius: 6px;
   font-family: "Grotesque", sans-serif;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
   margin-top: 20px;
 }
 
 .modal-left input[type="submit"]:hover {
   color: lightgrey;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.button__check {
+  width: 80%;
+  height: 60px;
+  background: #2D7AEE;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-family: "Grotesque", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+  margin-top: 20px;
+}
+
+.check {
+  display: flex;
+  justify-content: center;
 }
