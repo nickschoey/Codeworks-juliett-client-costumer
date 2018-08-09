@@ -11,9 +11,9 @@ export default (state = defaultState, action) => {
     case 'POST_ORDER_SUCCESS':
       return {
         ...state,
-        id: action.data,
-        waiting: true,
-        paid: false
+        
+        waiting: false,
+        paid: true
       }
     case 'POST_ORDER_FAILURE':
       return {

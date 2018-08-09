@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { postOrder } from '../../actions/postOrder'
-import { verifyOrder } from '../../actions/verifyOrder'
 import CameraQr from '../cameraQr/CameraQr'
 import './modal.css';
 import camera from '../../assets/Camera.svg';
@@ -32,17 +31,6 @@ class Modal extends Component {
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value })
 
   handleCamera = () => this.setState({ cameraFlag: !this.state.cameraFlag })
-
-  handleVerify = (flag) => {
-    let myInterval
-    if (!flag) {
-      myInterval = setInterval(() => this.props.verifyOrder(this.props.order.id), 5000)
-
-    } else {
-      clearInterval(myInterval)
-    }
-  }
-  
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -78,17 +66,17 @@ class Modal extends Component {
             <form onSubmit={this.handleSubmit}>
               <h3>Delivery details </h3>
               <label>Name:</label>
-              <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+              <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required/>
               <label>Address:</label>
-              <input type="text" name="address" value={this.state.address} onChange={this.handleChange} />
+            <input type="text" name="address" value={this.state.address} onChange={this.handleChange} required/>
               <label>Phone:</label>
-              <input type="text" name="phone" value={this.state.phone} onChange={this.handleChange} />
+            <input type="text" name="phone" value={this.state.phone} onChange={this.handleChange} required/>
               <label>Email:</label>
-              <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+            <input type="text" name="email" value={this.state.email} onChange={this.handleChange} required/>
               <h3>Payment Details</h3>
               <label>Your public ETH Wallet: <a onClick={this.handleCamera}><img className="cameraImg" src={camera} /></a></label>
-              <input type="text" name="wallet" value={this.state.wallet} onChange={this.handleChange} />
-            <input type="submit" onClick={this.handleVerify.bind(this, false)} value="Submit" />
+            <input type="text" name="wallet" value={this.state.wallet} onChange={this.handleChange} required/>
+              <input type="submit" value="Submit" />
             </form>
           </div>
           <div className="modal-right">
@@ -98,12 +86,10 @@ class Modal extends Component {
     }
 
     if (isWaiting && !paid) {
-      
       modalContent =
         <div className="modal" data-status={this.props.status}>
           <div className="modal-left check">
             <h1>Your order is being processed. You can transfer {cryptoPrice} Ξ to the wallet represented by the qr on the right.</h1>
-          {/* <button className="button__check" onClick={this.handleVerify}>Check my transfer</button> */}
           </div>
           <div className="modal-right">
           <img src={qrCode}/>
@@ -111,8 +97,6 @@ class Modal extends Component {
         </div>
     }
     if (!isWaiting && paid) {
-
-      {this.handleVerify.bind(this, true)}
       modalContent =
         <div className="modal" data-status={this.props.status}>
           <h2 className="pulse">your payment has been verified and your order will be ready shortly</h2>
@@ -136,8 +120,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  postOrder: (data) => dispatch(postOrder(data)),
-  verifyOrder: (id) => dispatch(verifyOrder(id))
+  postOrder: (data) => dispatch(postOrder(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);
